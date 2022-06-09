@@ -1,21 +1,3 @@
-// const { library } = require('./build.json');
-
-// module.exports = {
-//   alias: {
-//     '@': './src',
-//   },
-//   plugins: [
-//     [
-//       '@alifd/build-plugin-lowcode',
-//       {
-//         library,
-//         engineScope: "@alilc"
-//       },
-//     ],
-//   ],
-// };
-
-// https://lowcode-engine.cn/docV2/ulvlkz
 const { library } = require('./build.json');
 
 module.exports = {
@@ -23,16 +5,34 @@ module.exports = {
     '@': './src',
   },
   plugins: [
-    '@alifd/build-plugin-lowcode',
     [
-      '@alilc/build-plugin-alt',
+      '@alifd/build-plugin-lowcode',
       {
-        type: 'component',
-        inject: true,
         library,
-        // 配置要打开的页面，在注入调试模式下，不配置此项的话不会打开浏览器
-        // 支持直接使用官方 demo 项目：https://lowcode-engine.cn/demo/index.html
-        openUrl: "https://lowcode-engine.cn/demo/index.html?debug"
-      }
-    ]],
+        engineScope: "@alilc"
+      },
+    ],
+  ],
 };
+
+// https://lowcode-engine.cn/docV2/ulvlkz
+// const { library } = require('./build.json');
+
+// module.exports = {
+//   alias: {
+//     '@': './src',
+//   },
+//   plugins: [
+//     '@alifd/build-plugin-lowcode',
+//     [
+//       '@alilc/build-plugin-alt',
+//       {
+//         type: 'component',
+//         inject: true,
+//         library,
+//         // 配置要打开的页面，在注入调试模式下，不配置此项的话不会打开浏览器
+//         // 支持直接使用官方 demo 项目：https://lowcode-engine.cn/demo/index.html
+//         openUrl: "https://lowcode-engine.cn/demo/index.html?debug"
+//       }
+//     ]],
+// };
