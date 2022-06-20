@@ -1,7 +1,7 @@
 {
-  "name": "react-comps",
+  "name": "react-comps-by-cui",
   "version": "0.1.0",
-  "description": "react-comps",
+  "description": "react-comps-by-cui",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "types/index.d.ts",
@@ -60,6 +60,7 @@
     "@types/react-dom": "^16.9.4",
     "build-plugin-component-multiple": "^1.0.0-beta.5",
     "build-plugin-fusion": "^0.1.0",
+    "dayjs": "^1.11.3",
     "f2elint": "^1.2.0"
   },
   "dependencies": {
@@ -77,6 +78,7 @@
     "webpack": "^4.46.x"
   },
   "componentConfig": {
-    "isComponentLibrary": true
+    "isComponentLibrary": true,
+    "materialSchema": "https://unpkg.com/react-comps-by-cui@0.1.0/build/lowcode/assets-prod.json"
   }
 }

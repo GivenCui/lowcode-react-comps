@@ -1,16 +1,16 @@
 
 import { ComponentMetadata, Snippet } from '@alilc/lowcode-types';
 
-const ColorfulInputMeta: ComponentMetadata = {
-  "componentName": "ColorfulInput",
-  "title": "ColorfulInput",
+const MyRenderSchemaMeta: ComponentMetadata = {
+  "componentName": "MyRenderSchema",
+  "title": "MyRenderSchema",
   "docUrl": "",
   "screenshot": "",
   "devMode": "proCode",
   "npm": {
     "package": "react-comps-by-cui",
     "version": "0.1.0",
-    "exportName": "ColorfulInput",
+    "exportName": "MyRenderSchema",
     "main": "src/index.tsx",
     "destructuring": true,
     "subName": ""
@@ -21,11 +21,11 @@ const ColorfulInputMeta: ComponentMetadata = {
         "title": {
           "label": {
             "type": "i18n",
-            "en-US": "color",
-            "zh-CN": "color"
+            "en-US": "title",
+            "zh-CN": "title"
           }
         },
-        "name": "color",
+        "name": "title",
         "setter": {
           "componentName": "RadioGroupSetter",
           "props": {
@@ -44,52 +44,26 @@ const ColorfulInputMeta: ComponentMetadata = {
           },
           "initialValue": "string"
         }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "style",
-            "zh-CN": "style"
-          }
-        },
-        "name": "style",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "object",
-                "value": "object"
-              }
-            ],
-            "options": [
-              {
-                "label": "object",
-                "value": "object"
-              }
-            ]
-          },
-          "initialValue": "object"
-        }
       }
     ],
-    "supports": {},
+    "supports": {
+      "style": true
+    },
     "component": {}
   }
 };
 const snippets: Snippet[] = [
   {
-    "title": "ColorfulInput",
+    "title": "MyRenderSchema",
     "screenshot": "",
     "schema": {
-      "componentName": "ColorfulInput",
+      "componentName": "MyRenderSchema",
       "props": {}
     }
   }
 ];
 
 export default {
-  ...ColorfulInputMeta,
+  ...MyRenderSchemaMeta,
   snippets
 };

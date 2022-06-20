@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { ColorfulButton } from 'react-comps';
+import { ColorfulButton } from 'react-comps-by-cui';
 
 export default { title: 'ColorfulButton' };
 

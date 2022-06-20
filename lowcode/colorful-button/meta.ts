@@ -8,7 +8,7 @@ const ColorfulButtonMeta: ComponentMetadata = {
   "screenshot": "",
   "devMode": "proCode",
   "npm": {
-    "package": "react-comps",
+    "package": "react-comps-by-cui",
     "version": "0.1.0",
     "exportName": "ColorfulButton",
     "main": "src/index.tsx",

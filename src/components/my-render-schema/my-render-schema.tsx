@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createElement, useEffect } from 'react';
 import ReactRenderer from '@alilc/lowcode-react-renderer';
-import { event } from '@alilc/lowcode-engine';
 
 export interface MyRenderSchemaProps {
   title?: 'string';
@@ -88,11 +87,13 @@ const MyRenderSchema: React.FC<MyRenderSchemaProps> = function MyRenderSchema({
   };
 
   useEffect(() => {
-    event.on('componentsInitOk', (res) => {
-      // 1233
-      console.log(res);
-    })
+    // 运行 报 event undefined
+    console.log('myRenderSchema 渲染', window._components);
+    setTimeout(() => {
+      console.log('window._components', window._components);
+    }, 5000);
   }, [])
+
   return (
     <div>
       <div>schema 回显测试</div>

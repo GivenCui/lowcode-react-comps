@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { ColorfulInput } from 'react-comps';
+import { ColorfulInput } from 'react-comps-by-cui';
 
 export default { title: 'ColorfulInput' };
 
