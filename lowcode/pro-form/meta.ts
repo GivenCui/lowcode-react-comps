@@ -1,1389 +1,553 @@
-
 import { ComponentMetadata, Snippet } from '@alilc/lowcode-types';
+import { createElement } from 'react';
+import { nanoid } from 'nanoid';
 
 const ProFormMeta: ComponentMetadata = {
-  "componentName": "ProForm",
-  "title": "ProForm",
-  "docUrl": "",
-  "screenshot": "",
-  "devMode": "proCode",
-  "npm": {
-    "package": "react-comps-by-cui",
-    "version": "0.1.0",
-    "exportName": "ProForm",
-    "main": "src/index.tsx",
-    "destructuring": true,
-    "subName": ""
+  group: '精选组件',
+  category: '高级表单(next)',
+  componentName: 'ProForm',
+  title: '高级表单 by cui',
+  docUrl: '',
+  screenshot: '',
+  devMode: 'proCode',
+  npm: {
+    package: 'react-comps-by-cui',
+    version: '0.1.0',
+    exportName: 'ProForm',
+    main: 'src/index.tsx',
+    destructuring: true,
+    subName: '',
   },
-  "configure": {
-    "props": [
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "prefix",
-            "zh-CN": "样式前缀"
-          },
-          "tip": "prefix | 样式前缀"
-        },
-        "name": "prefix",
-        "description": "样式前缀",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
+  props: [],
+  configure: {
+    component: {
+      isContainer: true,
+      isMinimalRenderUnit: true,
+      nestingRule: {
+        childWhitelist: /ProForm.*/i,
       },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "inline",
-            "zh-CN": "内联表单"
-          },
-          "tip": "inline | 内联表单"
-        },
-        "name": "inline",
-        "description": "内联表单",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "fullWidth",
-            "zh-CN": "fullWidth"
-          }
-        },
-        "name": "fullWidth",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "colon",
-            "zh-CN": "colon"
-          }
-        },
-        "name": "colon",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "size",
-            "zh-CN": "单个 Item 的 "
-          },
-          "tip": "size | 单个 Item 的 size 自定义，优先级高于 Form 的 size, 并且当组件与 Item 一起使用时，组件自身设置 size 属性无效。"
-        },
-        "name": "size",
-        "description": "单个 Item 的 size 自定义，优先级高于 Form 的 size, 并且当组件与 Item 一起使用时，组件自身设置 size 属性无效。",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "large",
-                "value": "large"
-              },
-              {
-                "label": "medium",
-                "value": "medium"
-              },
-              {
-                "label": "small",
-                "value": "small"
-              }
-            ],
-            "options": [
-              {
-                "label": "large",
-                "value": "large"
-              },
-              {
-                "label": "medium",
-                "value": "medium"
-              },
-              {
-                "label": "small",
-                "value": "small"
-              }
-            ]
-          },
-          "initialValue": "large"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "labelAlign",
-            "zh-CN": "标签的位置"
-          },
-          "tip": "labelAlign | 标签的位置"
-        },
-        "name": "labelAlign",
-        "description": "标签的位置",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "top",
-                "value": "top"
-              },
-              {
-                "label": "left",
-                "value": "left"
-              },
-              {
-                "label": "inset",
-                "value": "inset"
-              }
-            ],
-            "options": [
-              {
-                "label": "top",
-                "value": "top"
-              },
-              {
-                "label": "left",
-                "value": "left"
-              },
-              {
-                "label": "inset",
-                "value": "inset"
-              }
-            ]
-          },
-          "initialValue": "top"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "labelTextAlign",
-            "zh-CN": "标签的左右对齐方式"
-          },
-          "tip": "labelTextAlign | 标签的左右对齐方式"
-        },
-        "name": "labelTextAlign",
-        "description": "标签的左右对齐方式",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "left",
-                "value": "left"
-              },
-              {
-                "label": "right",
-                "value": "right"
-              }
-            ],
-            "options": [
-              {
-                "label": "left",
-                "value": "left"
-              },
-              {
-                "label": "right",
-                "value": "right"
-              }
-            ]
-          },
-          "initialValue": "left"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "field",
-            "zh-CN": "经 `new Fie"
-          },
-          "tip": "field | 经 `new Field(this)` 初始化后，直接传给 Form 即可 用到表单校验则不可忽略此项"
-        },
-        "name": "field",
-        "description": "经 `new Field(this)` 初始化后，直接传给 Form 即可 用到表单校验则不可忽略此项",
-        "setter": {
-          "componentName": "MixedSetter",
-          "isRequired": false,
-          "props": {}
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "saveField",
-            "zh-CN": "保存 Form 自动"
-          },
-          "tip": "saveField | 保存 Form 自动生成的 field 对象"
-        },
-        "name": "saveField",
-        "description": "保存 Form 自动生成的 field 对象",
-        "setter": {
-          "componentName": "FunctionSetter",
-          "isRequired": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "labelCol",
-            "zh-CN": "控制第一级 Item"
-          },
-          "tip": "labelCol | 控制第一级 Item 的 labelCol"
-        },
-        "name": "labelCol",
-        "description": "控制第一级 Item 的 labelCol",
-        "setter": {
-          "componentName": "ObjectSetter",
-          "props": {
-            "config": {
-              "items": [
-                {
-                  "title": {
-                    "label": {
-                      "type": "i18n",
-                      "en-US": "span",
-                      "zh-CN": "span"
-                    }
-                  },
-                  "name": "span",
-                  "setter": {
-                    "componentName": "MixedSetter",
-                    "props": {
-                      "setters": [
-                        {
-                          "componentName": "StringSetter",
-                          "isRequired": false,
-                          "initialValue": ""
-                        },
-                        {
-                          "componentName": "NumberSetter",
-                          "isRequired": false,
-                          "initialValue": 0
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "title": {
-                    "label": {
-                      "type": "i18n",
-                      "en-US": "offset",
-                      "zh-CN": "offset"
-                    }
-                  },
-                  "name": "offset",
-                  "setter": {
-                    "componentName": "MixedSetter",
-                    "props": {
-                      "setters": [
-                        {
-                          "componentName": "StringSetter",
-                          "isRequired": false,
-                          "initialValue": ""
-                        },
-                        {
-                          "componentName": "NumberSetter",
-                          "isRequired": false,
-                          "initialValue": 0
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "extraSetter": {
-                "componentName": "MixedSetter",
-                "isRequired": false,
-                "props": {}
-              }
-            }
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "wrapperCol",
-            "zh-CN": "控制第一级 Item"
-          },
-          "tip": "wrapperCol | 控制第一级 Item 的 wrapperCol"
-        },
-        "name": "wrapperCol",
-        "description": "控制第一级 Item 的 wrapperCol",
-        "setter": {
-          "componentName": "ObjectSetter",
-          "props": {
-            "config": {
-              "items": [
-                {
-                  "title": {
-                    "label": {
-                      "type": "i18n",
-                      "en-US": "span",
-                      "zh-CN": "span"
-                    }
-                  },
-                  "name": "span",
-                  "setter": {
-                    "componentName": "MixedSetter",
-                    "props": {
-                      "setters": [
-                        {
-                          "componentName": "StringSetter",
-                          "isRequired": false,
-                          "initialValue": ""
-                        },
-                        {
-                          "componentName": "NumberSetter",
-                          "isRequired": false,
-                          "initialValue": 0
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "title": {
-                    "label": {
-                      "type": "i18n",
-                      "en-US": "offset",
-                      "zh-CN": "offset"
-                    }
-                  },
-                  "name": "offset",
-                  "setter": {
-                    "componentName": "MixedSetter",
-                    "props": {
-                      "setters": [
-                        {
-                          "componentName": "StringSetter",
-                          "isRequired": false,
-                          "initialValue": ""
-                        },
-                        {
-                          "componentName": "NumberSetter",
-                          "isRequired": false,
-                          "initialValue": 0
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "extraSetter": {
-                "componentName": "MixedSetter",
-                "isRequired": false,
-                "props": {}
-              }
-            }
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "children",
-            "zh-CN": "子元素"
-          },
-          "tip": "children | 子元素"
-        },
-        "name": "children",
-        "description": "子元素",
-        "setter": {
-          "componentName": "MixedSetter",
-          "isRequired": false,
-          "props": {}
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "disabled",
-            "zh-CN": "是否禁用"
-          },
-          "tip": "disabled | 是否禁用"
-        },
-        "name": "disabled",
-        "description": "是否禁用",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "value",
-            "zh-CN": "表单数值"
-          },
-          "tip": "value | 表单数值"
-        },
-        "name": "value",
-        "description": "表单数值",
-        "setter": {
-          "componentName": "MixedSetter",
-          "isRequired": false,
-          "props": {}
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "onChange",
-            "zh-CN": "表单变化回调"
-          },
-          "tip": "onChange | 表单变化回调"
-        },
-        "name": "onChange",
-        "description": "表单变化回调",
-        "setter": {
-          "componentName": "FunctionSetter"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "component",
-            "zh-CN": "设置标签类型"
-          },
-          "tip": "component | 设置标签类型"
-        },
-        "name": "component",
-        "description": "设置标签类型",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "ObjectSetter",
-                "props": {
-                  "config": {
-                    "extraSetter": {
-                      "componentName": "MixedSetter",
-                      "isRequired": false,
-                      "props": {}
-                    }
-                  }
-                },
-                "isRequired": false,
-                "initialValue": {}
-              },
-              {
-                "componentName": "FunctionSetter"
-              },
-              {
-                "componentName": "FunctionSetter"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "responsive",
-            "zh-CN": "是否开启内置的响应式"
-          },
-          "tip": "responsive | 是否开启内置的响应式布局 （使用ResponsiveGrid）"
-        },
-        "name": "responsive",
-        "description": "是否开启内置的响应式布局 （使用ResponsiveGrid）",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "gap",
-            "zh-CN": "gap"
-          }
-        },
-        "name": "gap",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              },
-              {
-                "componentName": "ArraySetter",
-                "props": {
-                  "itemSetter": {
-                    "componentName": "NumberSetter",
-                    "isRequired": false,
-                    "initialValue": 0
-                  }
-                },
-                "initialValue": []
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "isPreview",
-            "zh-CN": "是否开启预览态"
-          },
-          "tip": "isPreview | 是否开启预览态"
-        },
-        "name": "isPreview",
-        "description": "是否开启预览态",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "useLabelForErrorMessage",
-            "zh-CN": "是否使用 label"
-          },
-          "tip": "useLabelForErrorMessage | 是否使用 label 替换校验信息的 name 字段"
-        },
-        "name": "useLabelForErrorMessage",
-        "description": "是否使用 label 替换校验信息的 name 字段",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "type",
-            "zh-CN": "按钮的类型"
-          },
-          "tip": "type | 按钮的类型"
-        },
-        "name": "type",
-        "description": "按钮的类型",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "primary",
-                "value": "primary"
-              },
-              {
-                "label": "secondary",
-                "value": "secondary"
-              },
-              {
-                "label": "normal",
-                "value": "normal"
-              }
-            ],
-            "options": [
-              {
-                "label": "primary",
-                "value": "primary"
-              },
-              {
-                "label": "secondary",
-                "value": "secondary"
-              },
-              {
-                "label": "normal",
-                "value": "normal"
-              }
-            ]
-          },
-          "initialValue": "primary"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "icons",
-            "zh-CN": "按钮中 Icon 的"
-          },
-          "tip": "icons | 按钮中 Icon 的尺寸，用于替代 Icon 的默认大小"
-        },
-        "name": "icons",
-        "description": "按钮中 Icon 的尺寸，用于替代 Icon 的默认大小",
-        "setter": {
-          "componentName": "ObjectSetter",
-          "props": {
-            "config": {
-              "items": [
-                {
-                  "title": {
-                    "label": {
-                      "type": "i18n",
-                      "en-US": "loading",
-                      "zh-CN": "loading"
-                    }
-                  },
-                  "name": "loading",
-                  "setter": {
-                    "componentName": "SlotSetter",
-                    "props": {
-                      "mode": "node"
-                    },
-                    "isRequired": false,
-                    "initialValue": {
-                      "type": "JSSlot",
-                      "value": []
-                    }
-                  }
-                }
-              ],
-              "extraSetter": {
-                "componentName": "MixedSetter",
-                "isRequired": false,
-                "props": {}
-              }
-            }
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "iconSize",
-            "zh-CN": "按钮中 Icon 的"
-          },
-          "tip": "iconSize | 按钮中 Icon 的尺寸，用于替代 Icon 的默认大小"
-        },
-        "name": "iconSize",
-        "description": "按钮中 Icon 的尺寸，用于替代 Icon 的默认大小",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              },
-              {
-                "componentName": "SelectSetter",
-                "props": {
-                  "dataSource": [
-                    {
-                      "label": "large",
-                      "value": "large"
-                    },
-                    {
-                      "label": "medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "small",
-                      "value": "small"
-                    },
-                    {
-                      "label": "xxs",
-                      "value": "xxs"
-                    },
-                    {
-                      "label": "xs",
-                      "value": "xs"
-                    },
-                    {
-                      "label": "xl",
-                      "value": "xl"
-                    },
-                    {
-                      "label": "xxl",
-                      "value": "xxl"
-                    },
-                    {
-                      "label": "xxxl",
-                      "value": "xxxl"
-                    },
-                    {
-                      "label": "inherit",
-                      "value": "inherit"
-                    }
-                  ],
-                  "options": [
-                    {
-                      "label": "large",
-                      "value": "large"
-                    },
-                    {
-                      "label": "medium",
-                      "value": "medium"
-                    },
-                    {
-                      "label": "small",
-                      "value": "small"
-                    },
-                    {
-                      "label": "xxs",
-                      "value": "xxs"
-                    },
-                    {
-                      "label": "xs",
-                      "value": "xs"
-                    },
-                    {
-                      "label": "xl",
-                      "value": "xl"
-                    },
-                    {
-                      "label": "xxl",
-                      "value": "xxl"
-                    },
-                    {
-                      "label": "xxxl",
-                      "value": "xxxl"
-                    },
-                    {
-                      "label": "inherit",
-                      "value": "inherit"
-                    }
-                  ]
-                },
-                "initialValue": "large"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "htmlType",
-            "zh-CN": "当 componen"
-          },
-          "tip": "htmlType | 当 component = 'button' 时，设置 button 标签的 type 值"
-        },
-        "name": "htmlType",
-        "description": "当 component = 'button' 时，设置 button 标签的 type 值",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "submit",
-                "value": "submit"
-              },
-              {
-                "label": "reset",
-                "value": "reset"
-              },
-              {
-                "label": "button",
-                "value": "button"
-              }
-            ],
-            "options": [
-              {
-                "label": "submit",
-                "value": "submit"
-              },
-              {
-                "label": "reset",
-                "value": "reset"
-              },
-              {
-                "label": "button",
-                "value": "button"
-              }
-            ]
-          },
-          "initialValue": "submit"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "loading",
-            "zh-CN": "设置按钮的载入状态"
-          },
-          "tip": "loading | 设置按钮的载入状态"
-        },
-        "name": "loading",
-        "description": "设置按钮的载入状态",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "ghost",
-            "zh-CN": "是否为幽灵按钮"
-          },
-          "tip": "ghost | 是否为幽灵按钮"
-        },
-        "name": "ghost",
-        "description": "是否为幽灵按钮",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "BoolSetter",
-                "isRequired": false,
-                "initialValue": false
-              },
-              {
-                "componentName": "RadioGroupSetter",
-                "props": {
-                  "dataSource": [
-                    {
-                      "label": "light",
-                      "value": "light"
-                    },
-                    {
-                      "label": "dark",
-                      "value": "dark"
-                    }
-                  ],
-                  "options": [
-                    {
-                      "label": "light",
-                      "value": "light"
-                    },
-                    {
-                      "label": "dark",
-                      "value": "dark"
-                    }
-                  ]
-                },
-                "initialValue": "light"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "text",
-            "zh-CN": "是否为文本按钮"
-          },
-          "tip": "text | 是否为文本按钮"
-        },
-        "name": "text",
-        "description": "是否为文本按钮",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "warning",
-            "zh-CN": "是否为警告按钮"
-          },
-          "tip": "warning | 是否为警告按钮"
-        },
-        "name": "warning",
-        "description": "是否为警告按钮",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "href",
-            "zh-CN": "在Button组件使"
-          },
-          "tip": "href | 在Button组件使用component属性值为a时有效，代表链接页面的URL"
-        },
-        "name": "href",
-        "description": "在Button组件使用component属性值为a时有效，代表链接页面的URL",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "target",
-            "zh-CN": "在Button组件使"
-          },
-          "tip": "target | 在Button组件使用component属性值为a时有效，代表何处打开链接文档"
-        },
-        "name": "target",
-        "description": "在Button组件使用component属性值为a时有效，代表何处打开链接文档",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "autoFocus",
-            "zh-CN": "autoFocus"
-          }
-        },
-        "name": "autoFocus",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "form",
-            "zh-CN": "form"
-          }
-        },
-        "name": "form",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "formAction",
-            "zh-CN": "formAction"
-          }
-        },
-        "name": "formAction",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "formEncType",
-            "zh-CN": "formEncType"
-          }
-        },
-        "name": "formEncType",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "formMethod",
-            "zh-CN": "formMethod"
-          }
-        },
-        "name": "formMethod",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "formNoValidate",
-            "zh-CN": "formNoValidate"
-          }
-        },
-        "name": "formNoValidate",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "formTarget",
-            "zh-CN": "formTarget"
-          }
-        },
-        "name": "formTarget",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "name",
-            "zh-CN": "name"
-          }
-        },
-        "name": "name",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": false,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "locale",
-            "zh-CN": "国际化文案对象，属性"
-          },
-          "tip": "locale | 国际化文案对象，属性为组件的 displayName"
-        },
-        "name": "locale",
-        "description": "国际化文案对象，属性为组件的 displayName",
-        "setter": {
-          "componentName": "MixedSetter",
-          "isRequired": false,
-          "props": {}
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "pure",
-            "zh-CN": "是否开启 Pure "
-          },
-          "tip": "pure | 是否开启 Pure Render 模式，会提高性能，但是也会带来副作用"
-        },
-        "name": "pure",
-        "description": "是否开启 Pure Render 模式，会提高性能，但是也会带来副作用",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "rtl",
-            "zh-CN": "是否开启 rtl 模"
-          },
-          "tip": "rtl | 是否开启 rtl 模式"
-        },
-        "name": "rtl",
-        "description": "是否开启 rtl 模式",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "rows",
-            "zh-CN": "rows"
-          }
-        },
-        "name": "rows",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "StringSetter",
-                "isRequired": false,
-                "initialValue": ""
-              },
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "columns",
-            "zh-CN": "columns"
-          }
-        },
-        "name": "columns",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "StringSetter",
-                "isRequired": false,
-                "initialValue": ""
-              },
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "device",
-            "zh-CN": "device"
-          }
-        },
-        "name": "device",
-        "setter": {
-          "componentName": "RadioGroupSetter",
-          "props": {
-            "dataSource": [
-              {
-                "label": "phone",
-                "value": "phone"
-              },
-              {
-                "label": "tablet",
-                "value": "tablet"
-              },
-              {
-                "label": "desktop",
-                "value": "desktop"
-              }
-            ],
-            "options": [
-              {
-                "label": "phone",
-                "value": "phone"
-              },
-              {
-                "label": "tablet",
-                "value": "tablet"
-              },
-              {
-                "label": "desktop",
-                "value": "desktop"
-              }
-            ]
-          },
-          "initialValue": "phone"
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "spacing",
-            "zh-CN": "spacing"
-          }
-        },
-        "name": "spacing",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              },
-              {
-                "componentName": "ArraySetter",
-                "props": {
-                  "itemSetter": {
-                    "componentName": "NumberSetter",
-                    "isRequired": false,
-                    "initialValue": 0
-                  }
-                },
-                "initialValue": []
-              }
-            ]
-          },
-          "isRequired": true
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "emptyContent",
-            "zh-CN": "emptyContent"
-          }
-        },
-        "name": "emptyContent",
-        "setter": {
-          "componentName": "StringSetter",
-          "isRequired": true,
-          "initialValue": ""
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "ref",
-            "zh-CN": "ref"
-          }
-        },
-        "name": "ref",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "FunctionSetter"
-              },
-              {
-                "componentName": "ObjectSetter",
-                "props": {
-                  "config": {
-                    "extraSetter": {
-                      "componentName": "MixedSetter",
-                      "isRequired": false,
-                      "props": {}
-                    }
-                  }
-                },
-                "isRequired": false,
-                "initialValue": {}
-              }
-            ]
-          }
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "key",
-            "zh-CN": "key"
-          }
-        },
-        "name": "key",
-        "setter": {
-          "componentName": "MixedSetter",
-          "props": {
-            "setters": [
-              {
-                "componentName": "StringSetter",
-                "isRequired": false,
-                "initialValue": ""
-              },
-              {
-                "componentName": "NumberSetter",
-                "isRequired": false,
-                "initialValue": 0
-              }
-            ]
-          }
-        }
-      }
-    ],
-    "supports": {
-      "events": [
-        {
-          "name": "onSubmit",
-          "description": "form内有 `htmlType=\"submit\"` 的元素的时候会触发"
-        },
-        {
-          "name": "onClick",
-          "description": "点击按钮的回调"
-        }
-      ],
-      "className": true,
-      "style": true
     },
-    "component": {
-      "isContainer": true
-    }
-  }
+    props: [
+      {
+        name: 'globalConfig',
+        title: '全局配置',
+        type: 'group',
+        display: 'accordion',
+        items: [
+          {
+            name: 'status',
+            virtual: () => true,
+            title: '状态',
+            setter: {
+              componentName: 'RadioGroupSetter',
+              props: {
+                options: [
+                  {
+                    title: '只读态',
+                    value: 'readonly',
+                  },
+                  {
+                    title: '编辑态',
+                    value: 'editable',
+                  },
+                ],
+              },
+            },
+            defaultValue: 'editable',
+          },
+          {
+            name: 'columns',
+            title: '布局',
+            setter: {
+              componentName: 'RadioGroupSetter',
+              props: {
+                options: [
+                  {
+                    title: '一列',
+                    value: 1,
+                  },
+                  {
+                    title: '二列',
+                    value: 2,
+                  },
+                  {
+                    title: '三列',
+                    value: 3,
+                  },
+                  {
+                    title: '四列',
+                    value: 4,
+                  },
+                ],
+              },
+            },
+          },
+          {
+            name: 'labelAlign',
+            title: {
+              label: {
+                type: 'i18n',
+                zh_CN: '标签位置',
+                en_US: 'Label Align',
+              },
+              tip: {
+                type: 'i18n',
+                zh_CN: '属性: labelAlign | 说明: 标签的位置\n@enumdesc 上, 左, 内',
+                en_US: 'prop: labelAlign | description: label align',
+              },
+            },
+            setter: {
+              componentName: 'RadioGroupSetter',
+              props: {
+                options: [
+                  {
+                    title: '上',
+                    value: 'top',
+                  },
+                  {
+                    title: '左',
+                    value: 'left',
+                  },
+                  {
+                    title: '内',
+                    value: 'inset',
+                  },
+                ],
+              },
+            },
+            defaultValue: 'top',
+          },
+          {
+            name: 'labelCol.fixedSpan',
+            title: '标题宽度',
+            condition: (target) => {
+              return target.parent.getPropValue('labelAlign') === 'left';
+            },
+            setter: {
+              componentName: 'NumberSetter',
+              props: {
+                min: 0,
+                max: 24,
+              },
+            },
+          },
+          {
+            name: 'labelCol.offset',
+            title: '标题偏移',
+            condition: (target) => {
+              return target.parent.getPropValue('labelAlign') === 'left';
+            },
+            setter: {
+              componentName: 'NumberSetter',
+              props: {
+                min: 0,
+                max: 24,
+              },
+            },
+          },
+          {
+            name: 'wrapperCol.span',
+            title: '内容宽度',
+            condition: (target) => {
+              const labelAlign = target.parent.getPropValue('labelAlign');
+              return labelAlign === 'left' || labelAlign === 'inset';
+            },
+            setter: {
+              componentName: 'NumberSetter',
+              props: {
+                min: 0,
+                max: 24,
+              },
+            },
+          },
+          {
+            name: 'wrapperCol.offset',
+            title: '内容偏移',
+            condition: (target) => {
+              const labelAlign = target.parent.getPropValue('labelAlign');
+              return labelAlign === 'left' || labelAlign === 'inset';
+            },
+            setter: {
+              componentName: 'NumberSetter',
+              props: {
+                min: 0,
+                max: 24,
+              },
+            },
+          },
+          {
+            name: 'labelTextAlign',
+            title: {
+              label: {
+                type: 'i18n',
+                zh_CN: '标签对齐',
+                en_US: 'Text Align',
+              },
+              tip: {
+                type: 'i18n',
+                zh_CN: '属性: labelTextAlign | 说明: 标签的左右对齐方式\n@enumdesc 左, 右',
+                en_US: 'prop: labelTextAlign | description: label text align',
+              },
+            },
+            condition: (target) => {
+              return target.parent.getPropValue('labelAlign') === 'left';
+            },
+            setter: {
+              componentName: 'RadioGroupSetter',
+              props: {
+                options: ['left', 'right'],
+              },
+            },
+            defaultValue: 'right',
+          },
+        ],
+      },
+      {
+        name: '!items',
+        title: '表单项',
+        display: 'accordion',
+        extraProps: {
+          getValue(target: any) {
+            console.log()
+            const nodes = target?.node?.children?.map((child: any = {}) => {
+              const { propsData, componentName } = child;
+              const { formItemProps, ...componentProps } = propsData;
+              return { componentName, componentProps, ...formItemProps };
+            });
+            return nodes;
+          },
+          setValue(target: any, value) {
+            const { node } = target;
+            const map = {};
+            const adderMap = {};
+            if (!Array.isArray(value)) {
+              value = [];
+            }
+            value.forEach((item: any = {}) => {
+              item.componentName = item.componentName || 'ProFormInput';
+              map[item.primaryKey] = item;
+              adderMap[item.primaryKey] = item;
+            });
+
+            node.children.mergeChildren(
+              (child) => {
+                const targetKey =
+                  child.getPropValue('primaryKey') ||
+                  child.getPropValue('formItemProps').primaryKey;
+                if (map?.[targetKey]) {
+                  const target = map[targetKey];
+                  const { componentName, componentProps, ...formItemProps } = target;
+                  const props = {
+                    formItemProps,
+                    ...componentProps,
+                  };
+                  node.replaceChild(child, {
+                    componentName,
+                    props,
+                  });
+                  delete adderMap[targetKey];
+                  return false;
+                }
+                return true;
+              },
+              () => {
+                const items = [];
+                for (const key in adderMap) {
+                  if (Object.hasOwnProperty.call(adderMap, key)) {
+                    const { componentName, componentProps, ...formItemProps } = adderMap[key] || {};
+                    const props = { componentProps, formItemProps };
+                    items.push({
+                      componentName,
+                      props,
+                    });
+                  }
+                }
+                return items;
+              },
+              (firstChild, secondeChild) => {
+                const first = value.findIndex(
+                  (item) =>
+                    item.primaryKey === firstChild.getPropValue('primaryKey') ||
+                    firstChild.getPropValue('formItemProps').primaryKey,
+                );
+                const seconde = value.findIndex(
+                  (item) =>
+                    item.primaryKey === secondeChild.getPropValue('primaryKey') ||
+                    secondeChild.getPropValue('formItemProps').primaryKey,
+                );
+                return first - seconde;
+              },
+            );
+          },
+        },
+        setter: {
+          componentName: 'ArraySetter',
+          props: {
+            itemSetter: {
+              componentName: 'ObjectSetter',
+              initialValue: () => {
+                return {
+                  componentName: 'ProFormInput',
+                  primaryKey: nanoid(),
+                  label: '表单项123',
+                  size: 'medium',
+                  colSpan: 1,
+                  fullWidth: true,
+                };
+              },
+              props: {
+                config: {
+                  items: [
+                    {
+                      name: 'componentName',
+                      title: '表单项组件',
+                      display: 'inline',
+                      defaultValue: 'ProFormInput',
+                      important: true,
+                      setter: {
+                        componentName: 'SelectSetter',
+                        props: {
+                          options: [
+                            {
+                              title: '输入框',
+                              value: 'ProFormInput',
+                            },
+                            {
+                              title: '数字输入框',
+                              value: 'ProFormNumberInput',
+                            },
+                            {
+                              title: '选择器',
+                              value: 'ProFormSelect',
+                            },
+                            {
+                              title: '日期选择器',
+                              value: 'ProFormDatePicker',
+                            },
+                          ],
+                        },
+                      },
+                    },
+                    {
+                      name: 'primaryKey',
+                      title: '编号',
+                      condition: () => false,
+                      setter: 'StringSetter',
+                      defaultValue: () => nanoid(),
+                    },
+                    {
+                      name: 'name',
+                      title: {
+                        label: {
+                          type: 'i18n',
+                          zh_CN: '表单标识',
+                          en_US: 'Name',
+                        },
+                        tip: {
+                          type: 'i18n',
+                          zh_CN: '属性: name | 说明: 表单标识，用于表单校验',
+                          en_US: 'prop: name | description: form item name',
+                        },
+                      },
+                      setter: 'StringSetter',
+                    },
+                    {
+                      name: 'label',
+                      title: '标题',
+                      display: 'inline',
+                      defaultValue: '表单项',
+                      setter: 'StringSetter',
+                      important: true,
+                      supportVariable: true,
+                    },
+                    {
+                      name: 'size',
+                      title: {
+                        label: '尺寸',
+                        tip: '单个 Item 的 size 自定义，优先级高于 Form 的 size, 并且当组件与 Item 一起使用时，组件自身设置 size 属性无效。',
+                      },
+                      setter: {
+                        componentName: 'RadioGroupSetter',
+                        props: {
+                          options: ['small', 'medium', 'large'],
+                        },
+                      },
+                      defaultValue: 'medium',
+                    },
+                    {
+                      name: 'columnSpan',
+                      title: '表单项宽度',
+                      initialValue: 1,
+                      setter: {
+                        componentName: 'RadioGroupSetter',
+                        props: {
+                          options: [
+                            {
+                              title: '一列',
+                              value: 1,
+                            },
+                            {
+                              title: '二列',
+                              value: 2,
+                            },
+                            {
+                              title: '三列',
+                              value: 3,
+                            },
+                            {
+                              title: '四列',
+                              value: 4,
+                            },
+                          ],
+                        },
+                      },
+                    },
+                    {
+                      name: 'labelTip.enable',
+                      title: '标题提示',
+                      setter: {
+                        componentName: 'BoolSetter',
+                      },
+                    },
+                    {
+                      name: 'labelTip.icon',
+                      title: '提示图标',
+                      setter: {
+                        componentName: 'IconSetter',
+                      },
+                    },
+                    {
+                      name: 'labelTip.content',
+                      title: '提示内容',
+                      setter: {
+                        componentName: 'StringSetter',
+                      },
+                    },
+                    {
+                      name: 'required',
+                      defaultValue: false,
+                      title: {
+                        label: '是否必填',
+                        tip: 'required | 是否必填',
+                      },
+                      setter: {
+                        componentName: 'BoolSetter',
+                      },
+                      extraProps: {},
+                    },
+                    {
+                      name: 'fullWidth',
+                      defaultValue: true,
+                      title: {
+                        label: '宽度占满',
+                        tip: '单个 Item 中表单类组件宽度是否是100%',
+                      },
+                      setter: {
+                        componentName: 'BoolSetter',
+                      },
+                    },
+                    {
+                      name: 'isPreview',
+                      title: {
+                        label: '预览态',
+                        tip: '是否开启预览态',
+                      },
+                      setter: 'BoolSetter',
+                    },
+                    {
+                      name: 'autoValidate',
+                      title: {
+                        label: '自动校验',
+                        tip: '是否修改数据时自动触发校验',
+                      },
+                      setter: 'BoolSetter',
+                    },
+                    {
+                      name: '!entry',
+                      title: '组件详细配置',
+                      display: 'block',
+                      setter: (target) => {
+                        return createElement(
+                          'div',
+                          {
+                            onClick: () => {
+                              target.node.children.get(target.parent.key).select();
+                            },
+                          },
+                          '点击配置',
+                        );
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+    supports: {
+      style: true,
+      events: ['saveField', 'onSubmit', 'onChange'],
+    },
+  },
 };
 const snippets: Snippet[] = [
   {
-    "title": "ProForm",
-    "screenshot": "",
-    "schema": {
-      "componentName": "ProForm",
-      "props": {}
-    }
-  }
+    title: '高级表单 by cui',
+    screenshot:
+      'https://img.alicdn.com/imgextra/i2/O1CN016gn5DQ1FeXUNKdK22_!!6000000000512-55-tps-50-36.svg',
+    schema: {
+      componentName: 'ProForm',
+      props: {
+        placeholder: '请在右侧面板添加表单项+',
+        placeholderStyle: {
+          height: '38px',
+          color: '#0088FF',
+          background: '#d8d8d836',
+          border: 0,
+          gridArea: 'span 4 / span 4',
+        },
+        columns: 4,
+        labelCol: {
+          fixedSpan: 4,
+        },
+        labelAlign: 'top',
+        emptyContent: '添加表单项',
+      },
+      children: [
+        {
+          componentName: 'ProFormInput',
+          props: {
+            formItemProps: {
+              primaryKey: nanoid(),
+              label: '表单项',
+              size: 'medium',
+              device: 'desktop',
+              fullWidth: true,
+            },
+            placeholder: '请输入',
+          },
+        },
+        {
+          componentName: 'ProFormInput',
+          props: {
+            formItemProps: {
+              primaryKey: nanoid(),
+              label: '表单项',
+              size: 'medium',
+              device: 'desktop',
+              fullWidth: true,
+            },
+            placeholder: '请输入',
+          },
+        },
+      ],
+    },
+  },
 ];
 
 export default {
   ...ProFormMeta,
-  snippets
+  snippets,
 };
