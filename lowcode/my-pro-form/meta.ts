@@ -603,24 +603,21 @@ const ProFormMeta: ComponentMetadata = {
         extraProps: {
           setValue(target: any, value) {
             const { node } = target;
-            console.log('schema setValue', value);
-            // 一下两种都可以, 但是, setter 的值不能回显 ??
-            // node.importSchema(JSON.parse(value))
-            node.replaceWith(JSON.parse(value))
-            // console.log(target.getValue());
+            console.log('setValue', value)
+            node.importSchema(value)
+            // node.replaceWith(value.schema) // 会导致 setter 重新渲染
           }
         },
         setter: {
-          componentName: 'SelectSetter',
+          componentName: 'SelectSchemaSetter',
           props: {
             mode: 'single',
-            defaultValue: '',
-            options: [
-              {
-                title: '表单一',
-                value: JSON.stringify(schema)
-              }
-            ]
+            // options: [
+            //   {
+            //     title: '表单一',
+            //     value: JSON.stringify(schema)
+            //   }
+            // ]
           }
         }
       }
